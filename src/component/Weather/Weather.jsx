@@ -2,64 +2,17 @@ import React, {useState} from 'react'
 import {Grow, Grid, Typography, TextField, Card, CardContent} from '@material-ui/core'
 import useStyles from './styles'
 import { IoPartlySunny } from 'react-icons/io5'
+import { FiSunrise } from 'react-icons/fi'
+import {FiSunset} from 'react-icons/fi'
+import moment from 'moment'
 // import {IoMdRainy} from 'react-icons/io'
 
 import CountUp from 'react-countup'
-const api = {
-  key: '648b8d98fa6a3465ef2f95425330b67b',
-  base: 'https://api.openweathermap.org/data/2.5/',
-}
 
-const Weather = () => {
-    const classes = useStyles()
 
-    const[query, setQuery] = useState('');
-    const[weather, setWeather] = useState({})
-
-    const search = evt => {
-      if(evt.key === "Enter") {
-         fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-           .then((res) => res.json())
-           .then((result) => {
-             setWeather(result)
-             setQuery('')
-             console.log(result)
-           })
-      }
-    }
-
-      const dateBuilder = (d) => {
-        let months = [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December',
-        ]
-        let days = [
-          'Sunday',
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-        ]
-
-        let day = days[d.getDay()]
-        let date = d.getDate()
-        let month = months[d.getMonth()]
-        let year = d.getFullYear()
-
-        return `${day} ${date} ${month} ${year}`
-      }
+const Weather = ({setQuery, dateBuilder, weather, search}) => {
+  const classes = useStyles()
+   
    
     return (
       <div>
@@ -100,13 +53,27 @@ const Weather = () => {
                       <CountUp
                         end={Math.round(weather.main.temp)}
                         start={0}
-                        duration={3}
+                        duration={4}
                       />
                       °c
                     </Typography>
                     <Typography variant='subtitle1'>
                       {dateBuilder(new Date())}
                     </Typography>
+                    <div className={classes.sunContainer}>
+                      <div>
+                        <FiSunrise style={{ fontSize: '60px' }} />
+                        <Typography variant='subtitle1'>
+                          {moment.unix(weather.sys.sunrise).format('h:mm A')}
+                        </Typography>
+                      </div>
+                      <div>
+                        <FiSunset style={{ fontSize: '60px' }} />
+                        <Typography variant='subtitle1'>
+                          {moment.unix(weather.sys.sunset).format('h:mm A')}
+                        </Typography>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
               </Grow>

@@ -50,6 +50,11 @@ const styles = makeStyles((theme) => ({
       background:'transparent',
       color:'#fff',
       border:'none'
+  },
+  sunContainer: {
+    display:'flex',
+    width:'100%',
+    justifyContent:'space-between'
   }
 }))
 
