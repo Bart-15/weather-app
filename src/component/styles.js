@@ -9,17 +9,17 @@ const styles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     width: '100%',
     height: '100vh',
-    transition: '1.5s',
+    transition: '.5s',
   },
 
   hot: {
     backgroundImage: `url(${warm})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition:'center',
+    backgroundPosition: 'center',
     backgroundSize: 'cover',
     width: '100%',
     height: '100vh',
-    transition: '1.5s',
+    transition: '.5s',
   },
 
   cold: {
@@ -28,7 +28,7 @@ const styles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     width: '100%',
     height: '100vh',
-    transition: '1.5s',
+    transition: '.5s',
   },
 
   // [theme.breakpoints.up('sm')]  :{
