@@ -15,6 +15,7 @@ const styles = makeStyles((theme) => ({
   hot: {
     backgroundImage: `url(${warm})`,
     backgroundRepeat: 'no-repeat',
+    backgroundPosition:'center',
     backgroundSize: 'cover',
     width: '100%',
     height: '100vh',
@@ -29,6 +30,10 @@ const styles = makeStyles((theme) => ({
     height: '100vh',
     transition: '1.5s',
   },
+
+  // [theme.breakpoints.up('sm')]  :{
+  //   container
+  // }
 }))
 
 export default styles
